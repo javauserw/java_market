@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
         <!-- End of toolbar -->
-              <table id="tt" class="easyui-datagrid" style="width:100%;height:auto"  pagination="true" fit="true">
+              <table id="tt" class="easyui-datagrid" style="width:100%;height:auto"  pagination="true" fit="true" fitColumns="false">
     	<thead>
     		<tr>
     			<th field="account"  width="20%">用户工号</th>
