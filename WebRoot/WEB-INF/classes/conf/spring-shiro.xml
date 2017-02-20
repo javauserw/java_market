@@ -10,7 +10,7 @@
 
 	<description>Shiro安全配置</description>
 	<!-- 扫描service注入realm -->
-	<context:component-scan base-package="com.myssm.yuan.service" use-default-filters="false">
+	<context:component-scan base-package="com.xunsmart.login.service" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 	</context:component-scan>
 	<!--securityManager是shiro的核心，初始化时协调各个模块运行-->
@@ -20,20 +20,19 @@
 	   <property name="cacheManager" ref="shiroEhcacheManager" />
 	</bean>
     <!--realm配置，realm是shiro的桥梁，它主要是用来判断subject是否可以登录及权限等-->
-    <bean id="userRealm" class="com.myssm.yuan.shiro.UserRealm" />
+    <bean id="userRealm" class="com.xunsmart.common.shiro.LoginRealm" />
     <!-- <property name="userService" ref="userService"/></bean> 不扫描可采用此方法注入-->
     <!--shiro过滤器配置，bean的id值须与web中的filter-name的值相同-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 	<property name="securityManager" ref="securityManager" />
          <!-- 没有权限或者失败后跳转的页面 -->
-	 <property name="loginUrl" value="/login.jsp" /> 
-	 <property name="successUrl" value="/WEB-INF/page/index.jsp" />
+	 <property name="loginUrl" value="/login" /> 
+	 <property name="successUrl" value="/index" />
 	 <property name="unauthorizedUrl" value="/login/unauthorized" />
 		<property name="filterChainDefinitions">
 			<value>
-				/login/logout=logout
-				/login/**=anon
-				/**=authc,rest
+				/static/** = anon 
+				 /login =  authc
 			</value>
 		</property>
 	</bean>

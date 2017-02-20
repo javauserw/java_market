@@ -1,27 +1,37 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"  %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-     <a href="/user/getUserList">test</a>
-  </body>
+<meta name="copyright" content="All Rights Reserved, Copyright (C) 2013, Wuyeguo, Ltd." />
+<title>EasyUI Web Admin Power by Wuyeguo</title>
+<link rel="stylesheet" type="text/css" href="${path}/static/easyui/1.3.4/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/css/wu.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/css/icon.css" />
+<script type="text/javascript" src="${path}/static/jquery/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="${path}/static/easyui/1.3.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${path}/static/easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body class="easyui-layout">
+	<!-- begin of header -->
+	<jsp:include page="header.jsp"></jsp:include>
+    <!-- begin of sidebar -->
+	<jsp:include page="left.jsp"></jsp:include>
+    <!-- end of sidebar -->    
+    <!-- begin of main -->
+  	<jsp:include page="main.jsp"></jsp:include>
+    <!-- end of main --> 
+     <!-- begin of footer -->
+  	<jsp:include page="footer.jsp"></jsp:include>
+    <!-- end of footer -->  
+</body>
 </html>

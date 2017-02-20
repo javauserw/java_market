@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xunsmart.login.mapper.LoginMapper" >
+<resultMap type="com.xunsmart.login.pojo.User" id="resultMap" >
+	<id property="xun_user_id" column="userId" jdbcType="INTEGER"/>
+	<result column="xun_user_account" property="account" jdbcType="CHAR"/>
+	<result column="xun_user_name" property="userName" jdbcType="VARCHAR"/>
+	<result column="xun_user_password" property="password" jdbcType="VARCHAR"/>
+	<result column="xun_login_logo" property="loginLogo" jdbcType="CHAR"/>
+	<result column="xun_role_id" property="roleId" jdbcType="VARCHAR"/>
+	<result column="xun_user_status" property="status" jdbcType="CHAR"/>
+	<result column="xun_operator" property="operator" jdbcType="VARCHAR"/>
+	<result column="xun_operation_ip" property="operationIp" jdbcType="VARCHAR"/>
+	<result column="xun_operation_time" property="operationTime" jdbcType="VARCHAR"/>
+</resultMap>
+   <select id="getUserByAccount" resultMap="resultMap">
+ 		select * from DM_USER where 
+ 		<if test="account !=null and account !=''">
+ 		xun_user_account=#{account} 
+ 		</if>
+ 		<if test="password !=null and password !=''">
+ 		and xun_user_password=#{password}
+ 		</if>
+ 	</select>
+</mapper>
